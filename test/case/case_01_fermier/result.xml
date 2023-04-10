@@ -1,0 +1,35 @@
+<variables>
+    <variable>
+        <id>1</id>
+        <name>Poussins</name>
+        <type>Integer</type>
+        <domaine_type>INTERVAL</domaine_type>
+        <domaine_values>[1,100]</domaine_values>
+    </variable>
+    <variable>
+        <id>2</id>
+        <name>Cochons</name>
+        <type>Integer</type>
+        <domaine_type>INTERVAL</domaine_type>
+        <domaine_values>[1,100]</domaine_values>
+    </variable>
+    <variable>
+        <id>3</id>
+        <name>Boeufs</name>
+        <type>Integer</type>
+        <domaine_type>INTERVAL</domaine_type>
+        <domaine_values>[1,100]</domaine_values>
+    </variable>
+</variables>
+<expression>
+  <coefficient>5</coefficient>
+  <variable>Poussins</variable>
+  <operator>*</operator>
+  <coefficient>50</coefficient>
+  <variable>Cochons</variable>
+  <operator>+</operator>
+  <coefficient>100</coefficient>
+  <variable>Boeufs</variable>
+  <operator>=</operator>
+  <coefficient>1000</coefficient>
+</expression>

@@ -1,0 +1,11 @@
+<expressions>
+  <expression>
+    <coefficient>Constant</coefficient>
+    <variable>Var_X</variable>
+    <operator>+ or - or * or / or %</operator>
+    <coefficient>Constant</coefficient>
+    <variable>Var_Y</variable>
+    <operator>(=, &lt;, &gt;, &lt;=, &gt;=, !=)</operator>
+    <coefficient>Constant</coefficient>
+  </expression>
+</expressions>

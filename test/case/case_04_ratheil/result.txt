@@ -1,0 +1,105 @@
+Variables: 
+<variable>
+    <id>1</id>
+    <name>productionPlan</name>
+    <type>Integer</type>
+    <domaine_type>SET_OF_DISCRET_VALUES</domaine_type>
+    <domaine_values>[0,1,2,3,4,5]</domaine_values>
+</variable>
+
+<variable>
+    <id>2</id>
+    <name>h</name>
+    <type>Integer</type>
+    <domaine_type>INTERVAL</domaine_type>
+    <domaine_values>[2,∞]</domaine_values>
+</variable>
+
+<variable>
+    <id>3</id>
+    <name>q1,2</name>
+    <type>Integer</type>
+    <domaine_type>INTERVAL</domaine_type>
+    <domaine_values>[3,∞]</domaine_values>
+</variable>
+
+<variable>
+    <id>4</id>
+    <name>q2,1</name>
+    <type>Integer</type>
+    <domaine_type>INTERVAL</domaine_type>
+    <domaine_values>[5,∞]</domaine_values>
+</variable>
+
+Constraints: 
+<expressions>
+  <expression>
+    <coefficient>1</coefficient>
+    <variable>productionPlan</variable>
+    <operator>+</operator>
+    <coefficient>1</coefficient>
+    <variable>h</variable>
+    <operator><=</operator>
+    <coefficient>nbPeriods</coefficient>
+  </expression>
+</expressions>
+
+<expressions>
+  <expression>
+    <coefficient>1</coefficient>
+    <variable>productionPlan</variable>
+    <operator>+</operator>
+    <coefficient>1</coefficient>
+    <variable>q1,2</variable>
+    <operator><=</operator>
+    <coefficient>nbPeriods</coefficient>
+  </expression>
+</expressions>
+
+<expressions>
+  <expression>
+    <coefficient>1</coefficient>
+    <variable>productionPlan</variable>
+    <operator>+</operator>
+    <coefficient>1</coefficient>
+    <variable>q2,1</variable>
+    <operator><=</operator>
+    <coefficient>nbPeriods</coefficient>
+  </expression>
+</expressions>
+
+<expressions>
+  <expression>
+    <coefficient>1</coefficient>
+    <variable>productionPlan</variable>
+    <operator>+</operator>
+    <coefficient>2</coefficient>
+    <variable>h</variable>
+    <operator>=</operator>
+    <coefficient>nbPeriods</coefficient>
+  </expression>
+</expressions>
+
+<expressions>
+  <expression>
+    <coefficient>1</coefficient>
+    <variable>productionPlan</variable>
+    <operator>+</operator>
+    <coefficient>1</coefficient>
+    <variable>q1,2</variable>
+    <operator>=</operator>
+    <coefficient>nbPeriods</coefficient>
+  </expression>
+</expressions>
+
+<expressions>
+  <expression>
+    <coefficient>1</coefficient>
+    <variable>productionPlan</variable>
+    <operator>+</operator>
+    <coefficient>1</coefficient>
+    <variable>q2,1</variable>
+    <operator>=</operator>
+    <coefficient>nbPeriods</coefficient>
+  </expression>
+</expressions>
