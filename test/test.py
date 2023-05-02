@@ -32,7 +32,7 @@ def run_specific_test(folder: str):
     if os.path.isdir(folder_path):
             # For each problem file
             for file_name in os.listdir(folder_path):
-                if file_name.endswith('.txt'):
+                if file_name.endswith('problem.txt'):
                     file_path = os.path.join(folder_path, file_name)
                     with open(file_path, 'r') as file:
                         text = file.read()
@@ -48,4 +48,4 @@ def run_specific_test(folder: str):
 
 if __name__ == '__main__':
     # run_test()
-    run_specific_test('case_04_ratheil')
+    run_specific_test('case_01_fermier')

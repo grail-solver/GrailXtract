@@ -1,56 +1,17 @@
+The variables and constraints for this problem are:
+
 Variables: 
-<variable>
-    <id>1</id>
-    <name>Poussins</name>
-    <type>Integer</type>
-    <domaine_type>INTERVAL</domaine_type>
-    <domaine_values>[1,1000]</domaine_values>
-</variable>
-<variable>
-    <id>2</id>
-    <name>Cochons</name>
-    <type>Integer</type>
-    <domaine_type>INTERVAL</domaine_type>
-    <domaine_values>[1,1000]</domaine_values>
-</variable>
-<variable>
-    <id>3</id>
-    <name>Boeufs</name>
-    <type>Integer</type>
-    <domaine_type>INTERVAL</domaine_type>
-    <domaine_values>[1,1000]</domaine_values>
-</variable>
+{
+  var1: {"id": 1, "name": 'poussins', "type": 'Integer', "domaine_type": 'INTERVAL', "domaine_values": '[0,100]'},
+  var2: {"id": 2, "name": 'porcs', "type": 'Integer', "domaine_type": 'INTERVAL', "domaine_values": '[0,100]'},
+  var3: {"id": 3, "name": 'boeufs', "type": 'Integer', "domaine_type": 'INTERVAL', "domaine_values": '[0,100]'},
+}
 
 Constraints: 
-<expressions>
-  <expression>
-    <coefficient>5</coefficient>
-    <variable>Poussins</variable>
-    <operator>*</operator>
-    <coefficient>50</coefficient>
-    <variable>Cochons</variable>
-    <operator>+</operator>
-    <coefficient>100</coefficient>
-    <variable>Boeufs</variable>
-    <operator>=</operator>
-    <coefficient>1000</coefficient>
-  </expression>
-  <expression>
-    <coefficient>1</coefficient>
-    <variable>Poussins</variable>
-    <operator>&gt;=</operator>
-    <coefficient>1</coefficient>
-  </expression>
-  <expression>
-    <coefficient>1</coefficient>
-    <variable>Cochons</variable>
-    <operator>&gt;=</operator>
-    <coefficient>1</coefficient>
-  </expression>
-  <expression>
-    <coefficient>1</coefficient>
-    <variable>Boeufs</variable>
-    <operator>&gt;=</operator>
-    <coefficient>1</coefficient>
-  </expression>
-</expressions>
+{
+  'eq1': 'Var_1 + Var_2 + Var_3 = 100',
+  'eq2': 'Var_1 * 5 + Var_2 * 50 + Var_3 * 100 = 1000',
+  'eq3': 'Var_1 >= 1',
+  'eq4': 'Var_2 >= 1',
+  'eq5': 'Var_3 >= 1'
+}

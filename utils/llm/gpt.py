@@ -20,6 +20,8 @@ def gpt(prompt):
             stop=None,
             temperature=0.7,
         )
+        #response = response.to_dict()
+        #return response
         return response.choices[0].text.strip()
     except openai.error.APIError as e:
         return f"LLM_ERROR: {e}"

@@ -1,0 +1,29 @@
+Variables:
+<variable>
+    <id>1</id>
+    <name>number_of_chickens</name>
+    <type>Integer</type>
+    <domaine_type>INTERVAL</domaine_type>
+    <domaine_values>[0,100]</domaine_values>
+</variable>
+<variable>
+    <id>2</id>
+    <name>number_of_pigs</name>
+    <type>Integer</type>
+    <domaine_type>INTERVAL</domaine_type>
+    <domaine_values>[0,100]</domaine_values>
+</variable>
+<variable>
+    <id>3</id>
+    <name>number_of_cows</name>
+    <type>Integer</type>
+    <domaine_type>INTERVAL</domaine_type>
+    <domaine_values>[0,100]</domaine_values>
+</variable>
+
+Constraints:
+{eq1: number_of_chickens + number_of_pigs + number_of_cows = 100,
+ eq2: number_of_chickens * 5 + number_of_pigs * 50 + number_of_cows * 100 = 1000,
+ eq3: number_of_chickens >= 1,
+ eq4: number_of_pigs >= 1,
+ eq5: number_of_cows >= 1}

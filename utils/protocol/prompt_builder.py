@@ -3,7 +3,7 @@ import os
 # Read variable files and build variable structure
 variables = ""
 variables_path = "../utils/protocol/variables"
-print(os.getcwd())
+# print(os.getcwd())
 for filename in os.listdir(variables_path):
     with open(f"{variables_path}/{filename}", "r") as f:
         variables += f.read() + "\n"
@@ -20,3 +20,4 @@ constraint_struct = f"{constraints}"
 
 # Build prompt
 prompt = f"Analyzes this constraint satisfaction problem, then extracts the variables and constraints: '<problem>'. The variables must be encoded on this way: '{variable_struct}' and the constraints on this way '{constraint_struct}'"
+error_prompt = f"Analyzes this constraint satisfaction problem, then extracts the variables and constraints: '<problem>'. The variables must be encoded on this way: '{variable_struct}' and the constraints on this way '{constraint_struct}'. Retry as the current execution do not match the protocol causing this error : <error>"

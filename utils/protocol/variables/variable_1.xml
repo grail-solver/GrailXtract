@@ -1,7 +1,0 @@
-<variable>
-    <id>integer</id>
-    <name>string</name>
-    <type>Integer,Enum,Float</type>
-    <domaine_type>INTERVAL,SET_OF_DISCRET_VALUES</domaine_type>
-    <domaine_values>[integer]</domaine_values>
-</variable>
