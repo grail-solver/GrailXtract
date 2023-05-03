@@ -105,7 +105,7 @@ cp .env.sample .env
 
 ### Library Structure
 ```
-GrailXtract
+GrailXtract/xtract
 .
 ├── README.md
 ├── requirements.txt
