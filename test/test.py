@@ -66,4 +66,4 @@ if __name__ == '__main__':
     Function output(s): Json. The function runs the specified test and return a json strong stored into 
         result.json.
     """
-    run_specific_test('case_01_fermier')
+    run_specific_test('case_02_tennis')

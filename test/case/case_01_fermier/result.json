@@ -30,5 +30,6 @@
     {"id": 1, "name": "poussins", "type": "Integer", "domaine_type": "INTERVAL", "domaine_values": "[1,100]"},
     {"id": 2, "name": "cochons", "type": "Integer", "domaine_type": "INTERVAL", "domaine_values": "[1,100]"},
     {"id": 3, "name": "boeufs", "type": "Integer", "domaine_type": "INTERVAL", "domaine_values": "[1,100]"}
-  ]
+  ],
+  "llm_status": "success"
 }
