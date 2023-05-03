@@ -100,7 +100,7 @@ cp .env.sample .env
 ### Dependencies
 - python
 - openai 
-- dotenv
+- python-dotenv
 - json
 
 ### Library Structure
