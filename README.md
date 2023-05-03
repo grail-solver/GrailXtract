@@ -130,9 +130,9 @@ GrailXtract
 │   │       │   └── constraint_2.txt
 │   │       └── variables
 │   │           └── variable_1.txt
-└──  test
-     ├── case
-     ├── test.py
+└── test
+    ├── case
+    ├── test.py
 ```
 
 ### Contribution
