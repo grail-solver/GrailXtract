@@ -1,4 +1,4 @@
-from core.helper import grail_extractor
+from xtractor.core.helper import grail_extractor
 
 problem = """
 A farmer has $1000. With the $1000, he wishes to buy 100 animals of different species: 

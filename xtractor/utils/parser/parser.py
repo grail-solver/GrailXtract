@@ -1,7 +1,7 @@
 import re
-from utils.llm.gpt import gpt
-from utils.parser.equation import prompt_equation
 import json
+from xtractor.utils.llm.gpt import gpt
+from xtractor.utils.parser.equation import prompt_equation
 
 def parse_text(text):
     # replace newlines and spaces with empty string

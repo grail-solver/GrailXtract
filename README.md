@@ -4,11 +4,10 @@ GrailXtract is a Python library that uses the GPT-3 model to extract important i
 ### Usage
 To use the GrailXtract library, you can simply import the grail_extractor function from core.helper and pass your text problem as a string to the function. An example of how to use the library is shown below:
 
-
 ```python
 # sample.py
 
-from core.helper import grail_extractor
+from xtractor.core import grail_extractor
 
 problem = """
 A farmer has $1000. With the $1000, he wishes to buy 100 animals of different species: 

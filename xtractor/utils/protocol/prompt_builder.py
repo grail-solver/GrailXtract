@@ -2,8 +2,8 @@ import os
 
 # Read variable files and build variable structure
 variables = ""
-variables_path = "../utils/protocol/variables"
-# print(os.getcwd())
+variables_path = os.path.join('xtractor', 'utils', 'protocol', 'variables')
+
 for filename in os.listdir(variables_path):
     with open(f"{variables_path}/{filename}", "r") as f:
         variables += f.read() + "\n"
@@ -11,7 +11,7 @@ variable_struct = f"{variables}"
 
 # Read constraint files and build constraint structure
 constraints = ""
-constraints_path = "../utils/protocol/constraints"
+constraints_path = os.path.join('xtractor', 'utils', 'protocol', 'constraints')
 
 for filename in os.listdir(constraints_path):
     with open(f"{constraints_path}/{filename}", "r") as f:

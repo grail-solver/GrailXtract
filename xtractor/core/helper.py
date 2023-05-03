@@ -1,6 +1,6 @@
-from utils.protocol.prompt_builder import prompt, error_prompt
-from utils.parser import parser
-from utils.llm.gpt import gpt
+from xtractor.utils.protocol.prompt_builder import prompt, error_prompt
+from xtractor.utils.parser import parser
+from xtractor.utils.llm.gpt import gpt
 
 """
 Edit the value of this variable to define how many try can be done when error occur
