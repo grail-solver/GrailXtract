@@ -1,11 +1,12 @@
 from utils.protocol.prompt_builder import prompt, error_prompt
 from utils.parser import parser
 from utils.llm.gpt import gpt
+import json
 
 REQUEST_ATTEMPTS = 2
 
 
-def extract_data(problem: str, error: str = '', tries: int = 0):
+def grail_extractor(problem: str, error: str = '', tries: int = 0):
     if error:
         formatted_prompt = error_prompt.replace('<problem>', problem)
         formatted_prompt = formatted_prompt.replace('<error>', error)
@@ -14,7 +15,7 @@ def extract_data(problem: str, error: str = '', tries: int = 0):
 
     # Extract data using GPT-LLM
     output = gpt(formatted_prompt)
-    print(output)
+    # print(output)
 
     # Parse output
     try:
@@ -22,20 +23,14 @@ def extract_data(problem: str, error: str = '', tries: int = 0):
         variables = parser.format_variables(variables_text)
         equations = parser.format_constraints(equations_text)
 
-        print("Variables:")
-        print(variables)
-        print("Equations:")
-        print(equations)
-        return output
-    except ValueError as e:
+        equations['variables'] = variables
+        equations['llm_status'] = 'success'
+
+        return equations
+    except Exception as e:
         print("Error:", e)
         if tries < REQUEST_ATTEMPTS:
             # Recursively call function with added error message
             return extract_data(problem, str(e), tries+1)
         else:
-            return "LLM_ERROR: Bad output. Try again"
-
-
-
-if __name__ == '__main__':
-    extract_data('PyCharm')
+            return {"llm_status": 'fail', "llm_trace": e}

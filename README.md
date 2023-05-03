@@ -1,68 +1,145 @@
 ## GrailXtract
-gpt-based-extractor is the first layer of `gail-cp-solver` that uses the GPT3 model to extract relevant information from text and identify variables, constraints, and domains to create a CP model and solve it.
+GrailXtract is a Python library that uses the GPT-3 model to extract important information from plain text, such as variables, constraints, and domains. It serves as the first layer of the 'gail-cp-solver' package, and can create a CP (constraint programming) model from the extracted data and solve it. The library makes it easy to extract data from plain text and format it according to a predefined protocol.
 
 ### Usage
-To use it, make an API call to `/api/v0/data-extraction` and pass the text as a JSON object with the text field. For example:
+To use the GrailXtract library, you can simply import the grail_extractor function from core.helper and pass your text problem as a string to the function. An example of how to use the library is shown below:
 
-```
-{
-    "text": "On doit acheter tois objets A, B, C. On dispose d'un budget de 1000$. Le prix de A doit etre different de celui de B. Le prix de A doit être different de celui de C. Le prix de B doit etre different de celui de C. Le prix de A doit etre superieur a celui de B. Le total dépensé pour l'achat ne doit depasser le budget! Le double de A oté du triple de B doit etre inferieur a 50. Le double de A plus B doit etre different du prix de C."
-}
+
+```python
+from core.helper import grail_extractor
+
+problem = """
+A farmer has $1000. With the $1000, he wishes to buy 100 animals of different species: 
+chicks, pigs, and cows. It is assumed that a chick costs $5, a pig costs $50, and a cow 
+costs $100. He wants to have at least 1 animal of each species and wants to spend all of 
+the $1000 he has. How many chicks, pigs, and cows should he buy?
+"""
+
+if __name__ == '__main__':
+    output = grail_extractor(problem)
+    print(output)
 ```
 
 ### Ouput
-The application will return a JSON object with the extracted data in the following format:
+The library first uses utils.protocol.prompt_builder to create a prompt describing the output format, task to be performed, and the problem statement. It then utilizes utils.llm.gpt to process the prompt using the GPT model. Finally, it uses utils.parser to ensure that the data is properly formatted and returns the resulting JSON string as shown below.
 
 ```json
 {
-  "status": "success",
-  "data": {
-    "variables": [
-      {
-        "id": "1",
-        "name": "A",
-        "type": "Integer",
-        "domain_type": "INTERVAL",
-        "domain_values": [
-          "[0,1000]"
-        ]
-      }
-    ],
-    "constraints": [
-      {
-        "left_part": [
-          [
-            1,
-            "Var_1"
-          ]
-        ],
-        "metric": "!=",
-        "right_part": [
-          [
-            1,
-            "Var_2"
-          ]
-        ]
-      }
-    ]
-  }
+  "llm_status": "success",
+  "constraints": [
+    {
+      "left_part": [[1, "Var_1"], "+", [1, "Var_2"], "+", [1, "Var_3"]],
+      "relation": "=",
+      "right_part": [100]
+    },
+    {
+      "left_part": [[5, "Var_1"], "+", [50, "Var_2"], "+", [100, "Var_3"]],
+      "relation": "=",
+      "right_part": [1000]
+    },
+    {
+      "left_part": [[1, "Var_1"]],
+      "relation": ">=",
+      "right_part": [1]
+    },
+    {
+      "left_part": [[1, "Var_2"]],
+      "relation": ">=",
+      "right_part": [1]
+    },
+    {
+      "left_part": [[1, "Var_3"]],
+      "relation": ">=",
+      "right_part": [1]
+    }
+  ],
+  "variables": [
+    {"id": 1, "name": "poussins", "type": "Integer", "domaine_type": "INTERVAL", "domaine_values": "[1,100]"},
+    {"id": 2, "name": "cochons", "type": "Integer", "domaine_type": "INTERVAL", "domaine_values": "[1,100]"},
+    {"id": 3, "name": "boeufs", "type": "Integer", "domaine_type": "INTERVAL", "domaine_values": "[1,100]"}
+  ]
 }
 ```
-### Dependencies
-OpenAI GPT-3 API
-xml2js
-Express
 
 ### Installation
 * Clone this repository.
-* Install dependencies using npm:
+* cd into GrailXtract folder
+* Install dependencies using:
 ```bash
-npm i
+pip install -r requirements.txt
 ```
-* Set your OpenAI API key as an environment variable named OPENAI_API_KEY.
-* Run the application using the following command:
+* Create your env file by running:
 ```bash
-npm debug
+cp .env.sample .env
 ```
-* The application will now be running at http://localhost:3001.
+* Set up your GPT api key (OPENAI_API_KEY) in the .env file 
+* You can import the helper method in any python file of your project and start using the library
 
+### Common Error
+The status of the LLM (Language Model) request will be "success" in the JSON file if it is executed without errors, otherwise it will be "fail". In case of a failure, you can access the "llm_trace" index to get more information about the error.
+
+* Success:
+```json
+{
+  "llm_status": "success",
+  "constraints": [],
+  "variables": []
+}
+```
+
+* Error:
+```json
+{
+  "llm_status": "fail",
+  "llm_trace": "Error: Could not find variables in the text"
+}
+```
+
+### Dependencies
+- python
+- openai 
+- dotenv
+- json
+
+### Library Structure
+```
+GrailXtract
+.
+├── README.md
+├── requirements.txt
+├── .env.sample
+├── .env
+├── core
+│   ├── __init__.py
+│   └── helper.py
+├── utils
+│   │   ├── llm
+│   │   │   ├── __init__.py
+│   │   │   └── gpt.py
+│   │   ├── parser
+│   │   │   ├── parser.py
+│   │   │   └── equation.py
+│   │   └── protocol
+│   │       ├── __init__.py
+│   │       ├── prompt_builder.py
+│   │       ├── constraints
+│   │       │   ├── pconstraint_1.txt
+│   │       │   └── constraint_2.txt
+│   │       └── variables
+│   │           └── variable_1.txt
+└──  test
+     ├── case
+     ├── test.py
+```
+
+### Contribution
+- Contributions are welcome and encouraged! If you find a bug or have an idea for a new feature, please feel free to create a pull request.
+- If you're new to contributing to open source projects, don't worry! We welcome contributors of all skill levels and will do our best to provide guidance and support throughout the process.
+
+Here are some ways you can contribute:
+
+- Report bugs or suggest new features by opening an issue on GitHub
+- Submit a pull request to fix a bug or add a new feature
+- Help improve the documentation by suggesting changes or additions
+
+If you're not sure where to start or how you can help, feel free to reach out to us! We're always happy to answer questions and provide guidance.
