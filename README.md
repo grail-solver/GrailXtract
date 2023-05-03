@@ -63,20 +63,6 @@ The library first uses utils.protocol.prompt_builder to create a prompt describi
 }
 ```
 
-### Installation
-* Clone this repository.
-* cd into GrailXtract folder
-* Install dependencies using:
-```bash
-pip install -r requirements.txt
-```
-* Create your env file by running:
-```bash
-cp .env.sample .env
-```
-* Set up your GPT api key (OPENAI_API_KEY) in the .env file 
-* You can import the helper method in any python file of your project and start using the library
-
 ### Common Error
 The status of the LLM (Language Model) request will be "success" in the JSON file if it is executed without errors, otherwise it will be "fail". In case of a failure, you can access the "llm_trace" index to get more information about the error.
 
@@ -96,6 +82,21 @@ The status of the LLM (Language Model) request will be "success" in the JSON fil
   "llm_trace": "Error: Could not find variables in the text"
 }
 ```
+
+### Installation
+* Clone this repository.
+* cd into GrailXtract folder
+* Install dependencies using:
+```bash
+pip install -r requirements.txt
+```
+* Create your env file by running:
+```bash
+cp .env.sample .env
+```
+* Set up your GPT api key (OPENAI_API_KEY) in the .env file 
+* You can import the helper method in any python file of your project and start using the library
+
 
 ### Dependencies
 - python
@@ -135,8 +136,8 @@ GrailXtract
 ```
 
 ### Contribution
-- Contributions are welcome and encouraged! If you find a bug or have an idea for a new feature, please feel free to create a pull request.
-- If you're new to contributing to open source projects, don't worry! We welcome contributors of all skill levels and will do our best to provide guidance and support throughout the process.
+Contributions are welcome and encouraged! If you find a bug or have an idea for a new feature, please feel free to create a pull request. 
+If you're new to contributing to open source projects, don't worry! We welcome contributors of all skill levels and will do our best to provide guidance and support throughout the process.
 
 Here are some ways you can contribute:
 
@@ -145,3 +146,5 @@ Here are some ways you can contribute:
 - Help improve the documentation by suggesting changes or additions
 
 If you're not sure where to start or how you can help, feel free to reach out to us! We're always happy to answer questions and provide guidance.
+
+With love, GrailSolver Team
