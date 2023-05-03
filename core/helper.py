@@ -1,8 +1,10 @@
 from utils.protocol.prompt_builder import prompt, error_prompt
 from utils.parser import parser
 from utils.llm.gpt import gpt
-import json
 
+"""
+Edit the value of this variable to define how many try can be done when error occur
+"""
 REQUEST_ATTEMPTS = 2
 
 
@@ -15,7 +17,6 @@ def grail_extractor(problem: str, error: str = '', tries: int = 0):
 
     # Extract data using GPT-LLM
     output = gpt(formatted_prompt)
-    # print(output)
 
     # Parse output
     try:
@@ -31,6 +32,6 @@ def grail_extractor(problem: str, error: str = '', tries: int = 0):
         print("Error:", e)
         if tries < REQUEST_ATTEMPTS:
             # Recursively call function with added error message
-            return extract_data(problem, str(e), tries+1)
+            return grail_extractor(problem, str(e), tries+1)
         else:
             return {"llm_status": 'fail', "llm_trace": e}
