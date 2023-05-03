@@ -5,7 +5,7 @@ import json
 
 def parse_text(text):
     # replace newlines and spaces with empty string
-    flat_text = text.replace("\n", "").replace(" ", "").replace("(", "").replace(")", "") #.replace("<=", "inf_eq").replace(">=", "sup_eq").replace("!=", "diff")
+    flat_text = text.replace("\n", "").replace(" ", "").replace("(", "").replace(")", "")
 
     # Define regex patterns for variables and equations
     variable_pattern = r"Variables:{(.*)}"
@@ -53,26 +53,5 @@ def format_constraints(equations_text):
     if not match:
         return format_constraints(equations_text)
     else:
-        # print(output)
         equations = json.loads('{'+output+'}')
     return equations
-
-"""
-    equation_array = eval("{" + equations_text + "}")
-    equation_array = [equation for equation in equation_array.values()]
-    print(equation_array)
-    
-    # Operators
-    operators = ["*", "+", "/", "-", "<", ">", "inf_eq", "sup_eq", "=", "diff"]
-    relations = ["<", ">", "inf_eq", "sup_eq", "=", "dif"]
-    pattern = "(" + "|".join(re.escape(op) for op in operators) + ")"
-    
-    # Create empty list for storing formatted equations
-    formatted_equations = []
-    
-    for equation in equation_array:
-        chunks = re.split(pattern, equation)
-        chunks = [chunk for chunk in chunks if chunk.strip()]
-    
-        print(chunks)
-"""
