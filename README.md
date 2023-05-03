@@ -6,6 +6,8 @@ To use the GrailXtract library, you can simply import the grail_extractor functi
 
 
 ```python
+# sample.py
+
 from core.helper import grail_extractor
 
 problem = """
