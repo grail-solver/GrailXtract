@@ -34,4 +34,4 @@ def grail_extractor(problem: str, error: str = '', tries: int = 0):
             # Recursively call function with added error message
             return grail_extractor(problem, str(e), tries+1)
         else:
-            return {"llm_status": 'fail', "llm_trace": e}
+            return {"llm_status": 'fail', "llm_trace": str(e)}
