@@ -56,9 +56,9 @@ The library first uses utils.protocol.prompt_builder to create a prompt describi
     }
   ],
   "variables": [
-    {"id": 1, "name": "poussins", "type": "Integer", "domaine_type": "INTERVAL", "domaine_values": "[1,100]"},
-    {"id": 2, "name": "cochons", "type": "Integer", "domaine_type": "INTERVAL", "domaine_values": "[1,100]"},
-    {"id": 3, "name": "boeufs", "type": "Integer", "domaine_type": "INTERVAL", "domaine_values": "[1,100]"}
+    {"id": 1, "name": "chicks", "type": "Integer", "domaine_type": "INTERVAL", "domaine_values": "[1,100]"},
+    {"id": 2, "name": "pigs", "type": "Integer", "domaine_type": "INTERVAL", "domaine_values": "[1,100]"},
+    {"id": 3, "name": "cows", "type": "Integer", "domaine_type": "INTERVAL", "domaine_values": "[1,100]"}
   ]
 }
 ```
