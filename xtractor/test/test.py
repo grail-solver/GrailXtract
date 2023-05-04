@@ -1,5 +1,5 @@
 import os
-from xtractor.core import grail_extractor
+from xtractor.core.helper import grail_extractor
 import json
 
 """
