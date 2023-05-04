@@ -1,3 +1,4 @@
 venv
 xtractor/.env
 .idea
+.DS_Store
